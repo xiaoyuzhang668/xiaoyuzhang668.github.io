@@ -89,8 +89,9 @@ function validate() {
 		event.preventDefault();
 		event.stopPropagation();
 		contactUs.className = "was-validated";
-		//		return false;
 	}
+
+	isValid = true;
 
 	var contacts = document.getElementsByName("contact");
 	var isChecked = false;
@@ -99,31 +100,24 @@ function validate() {
 			isChecked = true;
 			error.setAttribute("hidden", true);
 			break;
+		} else {
+			error.removeAttribute("hidden");
+			event.preventDefault();
 		}
 	}
-//	var isValid = true;
-//	for (var j = 0; i < invalidFeedback.length; j++) {
-//		if (invalidFeedback[i].style.display === "block") {
-//			isValid = false;
-//			break;
-//		}
-//	}
-	if (isChecked) {
-		error.setAttribute("hidden", true);
+
+	if ((isChecked) && (isValid)) {
+		message.innerHTML = "All fields in the form are valid.";
+		event.preventDefault();
+		event.stopPropagation();
 	} else {
-		error.removeAttribute("hidden");
+		message.innerHTML = "At least one field in the form is not valid.";
 	}
-//	if ((isChecked) && (isValid)) {
-//		console.log("true");
-//		message.innerHTML = "All fields in the form are valid.";
-//		return false;
-//	} else {
-//		event.preventDefault();
-//		event.stopPropagation();
-//	}
 }
 
 function resetView() {
 	contactUs.className = "needs-validation";
 	error.setAttribute("hidden", true);
+	message.innerHTML = "";
+
 }
