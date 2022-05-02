@@ -105,7 +105,7 @@ function validate() {
 		}
 	}
 
-	if ((isChecked) && (isValid)) {
+	if ((isChecked) && name.length > 0 && email.length > 0 && phone.length > 0 && info.length > 0 && indexOf(email) != -1) {
 		message.innerHTML = "All fields in the form are valid.";
 		event.preventDefault();
 		event.stopPropagation();
