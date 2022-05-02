@@ -90,7 +90,6 @@ function validate() {
 		event.stopPropagation();
 		contactUs.className = "was-validated";
 	}
-
 	isValid = true;
 
 	var contacts = document.getElementsByName("contact");
